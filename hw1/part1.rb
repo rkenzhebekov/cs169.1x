@@ -4,11 +4,16 @@
 
 
 def palindrome?(str)
-  # YOUR CODE HERE
+  str = str.gsub /(\W|\s)/, ''
+  str.downcase.match str.downcase.reverse
 end
 
 def count_words(str)
-  # YOUR CODE HERE
+  h = {}
+  str.split(/\b\W/).each do |s|
+    h[s.downcase].nil? ? h[s.downcase] = 1 : h[s.downcase] += 1
+  end
+  h
 end
 
 
@@ -36,4 +41,4 @@ end
 test_str = "The rent is due on the first day of the month unless the first day of the month falls on a Saturday or Sunday"
 
 word_count = count_words test_str
-puts word_count
+puts word_count.inspect
